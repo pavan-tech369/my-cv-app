@@ -23,5 +23,5 @@ jobs:
           context: .
           push: true
           no-cache: true
-          tags: pavangurjar/my_cv_app:latest
+          tags: pavangurjar/my-cv-app:latest
 
