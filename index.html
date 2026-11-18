@@ -3,35 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My DevOps CV</title>
+    <title>Pavan Gurhar | Aspiring DevOps Engineer</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --border: #334155;
+            --badge-bg: rgba(56, 189, 248, 0.1);
         }
-        h1 { color: #2c3e50; }
-        .skills { background: #eef2f3; padding: 10px; border-radius: 5px; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--badge-bg);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .summary {
+            color: var(--text-secondary);
+            margin-bottom: 1.75rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border);
+            margin-left: 0.75rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(15, 23, 42, 0.6);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* Experience & Projects */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .item-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .item-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: rgba(15, 23, 42, 0.5);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        ul.bullet-list {
+            list-style-position: outside;
+            margin-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        ul.bullet-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-stack {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-family: monospace;
+        }
+
+        /* Achievements & Education */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            header { padding: 1.75rem; }
+        }
     </style>
 </head>
 <body>
-    <h1>Hellooooo!!!!!!! I'm a Aspiring DevOps Engineer</h1>
-    <p>Welcome to my automated deployment project!</p>
-    
-    <h2>Core Skills</h2>
-    <div class="skills">
-        <ul>
-            <li>Linux CLI</li>
-            <li>Docker Containerization</li>
-            <li>Git & Version Control</li>
-            <li>CI/CD Pipelines (GitHub Actions)</li>
-        </ul>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="status-badge">● Open to Entry-Level DevOps Roles</div>
+            <h1>Pavan Gurhar</h1>
+            <div class="subtitle">Aspiring DevOps & Cloud Infrastructure Engineer</div>
+            <p class="summary">
+                Motivated DevOps professional with hands-on experience in Docker containerization, automated CI/CD pipelines, and Linux environment management. Proven background in data pipeline optimization, data integrity, and operational workflow automation at NVIDIA, transitioning from a non-IT background through dedicated engineering practice.
+            </p>
+            <div class="contact-links">
+                <a href="tel:7892137840">📞 +91 7892137840</a>
+                <a href="mailto:pavangurjar369@gmail.com">✉️ pavangurjar369@gmail.com</a>
+                <a href="https://github.com/pavan-tech39" target="_blank">💻 GitHub: pavan-tech39</a>
+                <a href="https://hub.docker.com/u/pavangurjar" target="_blank">🐳 Docker Hub: pavangurjar</a>
+            </div>
+        </header>
+
+        <!-- Technical Skills -->
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="card">
+                    <h3>Containerization & Orchestration</h3>
+                    <div class="tag-container">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Dockerfiles</span>
+                        <span class="tag">Docker Hub</span>
+                        <span class="tag">Kubernetes (Foundational)</span>
+                        <span class="tag">Minikube</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>CI/CD & Version Control</h3>
+                    <div class="tag-container">
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">YAML Workflows</span>
+                        <span class="tag">Git & GitHub</span>
+                        <span class="tag">Automated Image Tagging</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Systems, Web & Scripting</h3>
+                    <div class="tag-container">
+                        <span class="tag">Linux CLI / Ubuntu</span>
+                        <span class="tag">Bash Scripting</span>
+                        <span class="tag">NGINX Web Server</span>
+                        <span class="tag">Python (Flask)</span>
+                        <span class="tag">HTML / CSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section>
+            <h2>Featured DevOps Projects</h2>
+            <div class="card" style="margin-bottom: 1.25rem;">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Automated CI/CD Containerized Portfolio Pipeline</span>
+                    </div>
+                    <span class="item-date">Live Project</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Engineered an end-to-end automated deployment pipeline using <strong>GitHub Actions</strong> that triggers on every push to the <code>main</code> branch.</li>
+                    <li>Containerized a custom static web application using a lightweight <code>nginx:alpine</code> base image to optimize image size and startup speed.</li>
+                    <li>Resolved registry caching bottlenecks by configuring <code>no-cache: true</code> builds and dynamic Git commit SHA tagging (<code>${{ github.sha }}</code>) alongside <code>latest</code> on Docker Hub.</li>
+                </ul>
+                <div class="project-stack">Stack: Docker • GitHub Actions • NGINX • Docker Hub • Linux WSL</div>
+            </div>
+
+            <div class="card">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Microservices Container Deployment</span>
+                    </div>
+                    <span class="item-date">Lab Project</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Developed a containerized Python (Flask) web application and optimized build efficiency using multi-stage Dockerfiles.</li>
+                    <li>Published versioned container images to Docker Hub for portable deployment across environments.</li>
+                    <li>Configured local cluster orchestration using Minikube and Kubernetes, implementing Deployments for availability and Services for internal routing.</li>
+                </ul>
+                <div class="project-stack">Stack: Python (Flask) • Docker • Kubernetes • Minikube • Bash</div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="card">
+                <div class="item-header">
+                    <div>
+                        <span class="item-title">Process Executive</span> — <span class="item-company">NVIDIA</span>
+                    </div>
+                    <span class="item-date">Oct 2024 – May 2025</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Optimized data pipelines for AI model training by executing high-accuracy object labeling and data annotation, ensuring reliable inputs for machine learning workflows.</li>
+                    <li>Collaborated with technical teams to identify dataset edge cases, improving model reliability and shortening validation cycles.</li>
+                    <li>Streamlined operational workflows by pinpointing process bottlenecks, contributing to faster delivery lifecycles for AI-driven products.</li>
+                    <li>Enforced strict data integrity and version control standards across large-scale datasets, applying core DevOps principles of environment consistency.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Achievements & Education -->
+        <section>
+            <h2>Key Achievements & Education</h2>
+            <div class="two-col">
+                <div class="card">
+                    <h3>Key Achievements</h3>
+                    <ul class="bullet-list">
+                        <li>Maintained a <strong>99%+ accuracy rate</strong> in high-volume AI data annotation workflows at NVIDIA.</li>
+                        <li>Reduced team labeling errors by <strong>~15%</strong> by documenting and implementing workflow improvements.</li>
+                        <li>Built and deployed automated CI/CD container pipelines from scratch within a 6-month transition period.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Education</h3>
+                    <p style="font-weight: 700; color: #ffffff; margin-bottom: 0.25rem;">Bachelor of Engineering (B.E. / B.Tech)</p>
+                    <p style="color: var(--accent); margin-bottom: 0.75rem;">Sri Siddhartha Institute of Technology</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Focused on engineering fundamentals, analytical problem-solving, and structured systems thinking.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Containerized with <span>Docker</span> • Served via <span>NGINX</span> • Deployed automatically via <span>GitHub Actions</span>
+        </footer>
     </div>
 </body>
 </html>
